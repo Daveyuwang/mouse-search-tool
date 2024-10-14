@@ -70,12 +70,18 @@
                     <span>100+</span>
                 </div>
             </div>
-
             <div class="form-group side-buttons-group">
-                <label for="side-buttons">Side Buttons</label>
-                <input type="number" id="side-buttons" name="side_buttons" min="0" class="side-buttons" style="width: 30%;">
-            </div>
-
+                <div class="side-buttons-header">
+                    <label for="side-buttons">Side Buttons</label>
+                    <span class="tooltip-wrapper">
+                        <span class="tooltip-icon">?</span>
+                        <span class="tooltip-text">Most mice have 2 side buttons. Leave it blank if you don't have a preference.</span>
+                    </span>
+                </div>
+                <div>
+                    <input type="number" id="side-buttons" name="side_buttons" min="0" class="side-buttons" style="width: 30%;">
+                </div>
+            </div>                                                                            
             <div class="form-group">
                 <label for="polling-rate">Min Polling Rate</label>
                 <select id="polling-rate" name="polling_rate" style="width: 20%;">

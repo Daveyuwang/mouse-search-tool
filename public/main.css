@@ -55,7 +55,7 @@ input[type="number"].side-buttons {
     display: flex;
     justify-content: flex-start;
     gap: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.1rem;
     align-items: center;
 }
 
@@ -175,3 +175,65 @@ tr:nth-child(even) {
     font-weight: bold;
     margin-bottom: 1rem;
 }
+
+.side-buttons-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+/* Tooltip wrapper for positioning */
+.tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+.tooltip-icon {
+    display: inline-block;
+    color: #0077b6;
+    font-weight: bold;
+    font-size: 0.75rem;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #0077b6;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    position: relative;
+    top: -2px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    background-color: #0077b6;
+    color: #fff;
+    text-align: left;
+    padding: 8px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    white-space: nowrap;
+    bottom: -40px;
+    left: 110%;
+    transform: translateX(0);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.875rem;
+    pointer-events: none;
+    max-width: none;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.side-buttons-group {
+    display: flex;
+    flex-direction: column; 
+}
+

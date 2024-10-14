@@ -20,6 +20,7 @@ def search_mice():
     weight = data.get('weight')  # Max acceptable weight
     side_buttons = data.get('side_buttons')  # Number of side buttons
     leniency = data.get('leniency', 'medium')  # Default to medium leniency
+    polling_rate = data.get('polling_rate')
 
     # Calculate target mouse dimensions based on user's hand size
     target_length = hand_length * 0.6
@@ -73,6 +74,11 @@ def search_mice():
     if side_buttons is not None and side_buttons != "":
         query += " AND side_buttons = ?"
         args.append(side_buttons)
+    
+    # Handle polling rate filtering
+    if polling_rate:
+        query += " AND polling_rate >= ?"
+        args.append(polling_rate)
 
     # Execute query and fetch results
     mice = cursor.execute(query, args).fetchall()

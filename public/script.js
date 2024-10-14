@@ -32,7 +32,7 @@ function searchMice() {
         polling_rate: parseInt(document.getElementById("polling-rate").value)
     };
 
-    fetch("http://localhost:5000/search", {
+    fetch("https://mou5-backend.onrender.com/search", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
