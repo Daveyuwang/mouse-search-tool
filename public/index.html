@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Search Tool</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mouse Search Tool</h1>
+        <form id="search-form">
+            <div class="form-group">
+                <div class="hand-size-title">Hand Size</div>
+                <div class="hand-size-group" style="gap: 0;">
+                    <div class="hand-size-input">
+                        <label for="hand-length">Hand Length (cm)</label>
+                        <input type="number" id="hand-length" name="hand_length" min="10" max="30" step="0.1" required style="width: 40%;">
+                    </div>
+                    <div class="hand-size-input">
+                        <label for="hand-width">Hand Width (cm)</label>
+                        <input type="number" id="hand-width" name="hand_width" min="5" max="20" step="0.1" required style="width: 40%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="section-title">Search Leniency</div>
+                <div class="leniency-group">
+                    <label><input type="radio" name="leniency" value="low"> Low</label>
+                    <label><input type="radio" name="leniency" value="medium" checked> Medium</label>
+                    <label><input type="radio" name="leniency" value="high"> High</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="grip-type">Grip Type</label>
+                <select id="grip-type" name="grip_type" style="width: 20%;">
+                    <option value="">Choose</option>
+                    <option value="Fingertip">Fingertip</option>
+                    <option value="Claw">Claw</option>
+                    <option value="Claw Palm">Claw Palm</option>
+                    <option value="Palm">Palm</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="section-title">Shape</div>
+                <div class="options-group">
+                    <label><input type="radio" name="shape" value="Ergonomic"> Ergonomic</label>
+                    <label><input type="radio" name="shape" value="Symmetrical"> Symmetrical</label>
+                    <label><input type="radio" name="shape" value="Both" checked> Both</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="section-title">Connection</div>
+                <div class="options-group">
+                    <label><input type="radio" name="connection" value="Wired"> Wired</label>
+                    <label><input type="radio" name="connection" value="Wireless"> Wireless</label>
+                    <label><input type="radio" name="connection" value="Both" checked> Both</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Max Acceptable Weight (g): <span class="slider-value" id="weight-value">80</span></label>
+                <div class="slider-container">
+                    <span><50</span>
+                    <input type="range" id="weight" name="weight" class="slider" style="width: 60%;" min="50" max="100" value="80" oninput="updateWeightValue(this.value)">
+                    <span>100+</span>
+                </div>
+            </div>
+
+            <div class="form-group side-buttons-group">
+                <label for="side-buttons">Side Buttons</label>
+                <input type="number" id="side-buttons" name="side_buttons" min="0" class="side-buttons" style="width: 30%;">
+            </div>
+
+            <div class="form-group">
+                <label for="polling-rate">Min Polling Rate</label>
+                <select id="polling-rate" name="polling_rate" style="width: 20%;">
+                    <option value="1000">1000</option>
+                    <option value="2000">2000</option>
+                    <option value="4000">4000</option>
+                    <option value="8000">8000</option>
+                </select>
+            </div>
+
+            <button type="button" onclick="searchMice()">Search</button>
+        </form>
+    </div>
+
+    <!-- Detach table from container and add title -->
+    <h2 style="text-align: center; color: #0077b6; font-weight: bold;">Results</h2>
+    <table id="results-table" style="table-layout: auto; width: auto; margin: 0 auto;">
+        <thead>
+            <tr>
+                <th class="sortable" onclick="sortTable(0)">Name</th>
+                <th class="sortable" onclick="sortTable(1)">Weight (g)</th>
+                <th class="sortable" onclick="sortTable(2)">Length (cm)</th>
+                <th class="sortable" onclick="sortTable(3)">Width (cm)</th>
+                <th>Shape</th>
+                <th>Connectivity</th>
+                <th>Sensor</th>
+                <th class="sortable" onclick="sortTable(7)">Polling Rate (Hz)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Search results will be displayed here -->
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+<div style="height: 50px;"></div>
+</body>
+</html>
