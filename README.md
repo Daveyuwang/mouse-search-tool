@@ -4,7 +4,7 @@ The **Mouse Search Tool** helps users find a gaming mouse that fits based on han
 
 👉 **[Check it out now!](https://mou5.netlify.app/)** 👈
 
-⚠️ Deployment is slow due to free hosting, but it works. Thanks for your patience!
+<sub>⚠️ Deployment is slow due to free hosting, but it works. Thanks for your patience!</sub>
 
 ## How It Works
 - **Fit**: Matches mouse length and width to 60% of hand dimensions for comfort.
