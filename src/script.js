@@ -1,6 +1,6 @@
-// Function to handle mouse search
+// Handle mouse search
 function searchMice() {
-    // Show loading message
+    // show loading message
     const loadingMessage = document.createElement('div');
     loadingMessage.id = 'loading-message';
     loadingMessage.textContent = 'Searching...';
@@ -78,7 +78,7 @@ function searchMice() {
         document.body.appendChild(errorMessage);
     })
     .finally(() => {
-        // Hide loading message
+        // hide loading message
         const loadingMessage = document.getElementById('loading-message');
         if (loadingMessage) {
             loadingMessage.remove();
@@ -134,7 +134,7 @@ window.onload = function() {
     });
 }
 
-// Function to update weight value display
+// function to update weight value display
 function updateWeightValue(value) {
     const weightValue = document.getElementById("weight-value");
     if (value == 50) {
