@@ -3,9 +3,8 @@ from flask_cors import CORS
 import sqlite3
 from database import DATABASE_PATH
 
-# Set up Flask application
 app = Flask(__name__)
-CORS(app)  # Allow CORS so that the frontend can interact with the backend
+CORS(app)
 
 # Flask route to search for mice
 @app.route('/search', methods=['POST'])
@@ -40,12 +39,12 @@ def search_mice():
     }
     leniency_range = leniency_ranges.get(leniency, {'length': 1.0, 'width': 0.6})
 
-    # Connect to the database
+    # connect to the database
     conn = sqlite3.connect(DATABASE_PATH)
-    conn.row_factory = sqlite3.Row  # Allow accessing rows as dictionaries
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    # Build the query dynamically based on provided criteria
+    # Build the query based on provided criteria
     query = "SELECT * FROM mice WHERE 1=1"
     args = []
     if grip_type:
@@ -96,9 +95,8 @@ def search_mice():
                 target_width - leniency_range['width'] <= adjusted_width <= target_width + leniency_range['width']):
             filtered_results.append(dict(mouse))
 
-    # Return filtered results as JSON
+    # return filtered results as JSON
     return jsonify(filtered_results)
 
-# Run the Flask application
 if __name__ == '__main__':
     app.run(debug=True)
