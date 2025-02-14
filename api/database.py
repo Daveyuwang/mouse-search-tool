@@ -5,17 +5,15 @@ import csv
 DATABASE_PATH = 'mice.db'
 CSV_PATH = 'mice.csv'
 
-# Connect to the SQLite database (or create it if it doesn't exist)
 def create_database():
-    # Remove old database if it exists to avoid appending duplicates
     if os.path.exists(DATABASE_PATH):
         os.remove(DATABASE_PATH)
 
-    # Connect to SQLite
+    # connect to SQLite
     conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
 
-    # Create table "mice" with all fields from CSV
+    # create table "mice" with all fields from CSV
     cursor.execute('''
         CREATE TABLE mice (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,7 +31,7 @@ def create_database():
         );
     ''')
 
-# Insert data from CSV into the table
+# insert data from CSV into the table
     with open(CSV_PATH, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         mice_data = []
@@ -57,16 +55,16 @@ def create_database():
                 row['Grip Type']
             ))
 
-    # Insert rows into the database
+    # insert rows into the database
     cursor.executemany('''
         INSERT INTO mice (name, length, width, weight, shape, connectivity, sensor, dpi, polling_rate, side_buttons, grip_type)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ''', mice_data)
 
-    # Commit changes and close connection
+    # commit changes and close connection
     conn.commit()
     conn.close()
 
-# Create and populate the database if this script is run directly
+# create and populate the database if this script is run directly
 if __name__ == '__main__':
     create_database()
